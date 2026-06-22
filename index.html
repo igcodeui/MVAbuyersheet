@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>i-Grant Marketing Services - MVA Buyer Eligibility Routing</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #344465 0%, #344465 50%, #344465 100%);
+            background-attachment: fixed;
+        }
+
+        /* Glassmorphism Styles */
+        .glass-panel {
+            background: rgba(201, 201, 201, 0.04);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(6, 182, 212, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .glass-input {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            transition: all 0.2s ease;
+        }
+
+        .glass-input:focus {
+            background: rgba(15, 23, 42, 0.8);
+            border-color: #06b6d4;
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.25);
+            outline: none;
+        }
+
+        /* Custom Scrollbar for Agent Efficiency */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.5);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(6, 182, 212, 0.4);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-slate-100 antialiased p-4 md:p-8">
+
+    <div class="max-w-7xl mx-auto space-y-6">
+        
+        <!-- Header Panel -->
+        <header class="glass-panel rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-4">
+                <img src="logo.png" alt="i-Grant Marketing Services Inc. Logo" class="h-16 w-auto object-contain">
+                <div class="h-10 w-[1px] bg-slate-700 hidden md:block"></div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-wide text-white uppercase">MVA BUYER REFERENCE SHEET</h1>
+                    <p class="text-xs text-slate-400">Firm Criteria Guide & Real-Time Buyer Evaluation Routing Matrix</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3 bg-amber-500/10 border border-amber-500/20 text-amber-300 px-4 py-2 rounded-xl text-xs max-w-md">
+                <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                <span><strong>CRITICAL REMINDER:</strong> Verify identity before using agreements. Each buyer utilizes an independent, distinct retainer format.</span>
+            </div>
+        </header>
+
+        <!-- Search Bar and Controls Panel -->
+        <section class="glass-panel rounded-2xl p-6">
+            <div class="max-w-2xl mx-auto text-center space-y-4">
+                <label for="stateSearch" class="block text-sm font-medium text-slate-300">Enter Client's State of Accident</label>
+                <div class="relative">
+                    <input type="text" id="stateSearch" placeholder="Type State Name or Code (e.g., California, TX, AZ...)" class="glass-input w-full px-5 py-4 pl-12 rounded-xl text-lg font-medium tracking-wide shadow-inner placeholder:text-slate-500">
+                    <div class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0x"/></svg>
+                    </div>
+                </div>
+                <div class="flex justify-center gap-2 flex-wrap text-xs text-slate-400">
+                    <span class="px-2 py-1 bg-slate-800/50 rounded border border-slate-700/50 cursor-pointer hover:border-slate-500 transition" onclick="document.getElementById('stateSearch').value='AZ'; handleSearch();">AZ</span>
+                    <span class="px-2 py-1 bg-slate-800/50 rounded border border-slate-700/50 cursor-pointer hover:border-slate-500 transition" onclick="document.getElementById('stateSearch').value='CA'; handleSearch();">CA</span>
+                    <span class="px-2 py-1 bg-slate-800/50 rounded border border-slate-700/50 cursor-pointer hover:border-slate-500 transition" onclick="document.getElementById('stateSearch').value='TX'; handleSearch();">TX</span>
+                    <span class="px-2 py-1 bg-slate-800/50 rounded border border-slate-700/50 cursor-pointer hover:border-slate-500 transition" onclick="document.getElementById('stateSearch').value='GA'; handleSearch();">GA</span>
+                    <span class="px-2 py-1 bg-slate-800/50 rounded border border-slate-700/50 cursor-pointer hover:border-slate-500 transition" onclick="document.getElementById('stateSearch').value='CO'; handleSearch();">CO (Warning Test)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Output Matrix Area -->
+        <main id="outputMatrix" class="space-y-6">
+            <!-- Initial App State View Placeholder -->
+            <div class="glass-panel rounded-2xl p-12 text-center text-slate-400 space-y-3">
+                <svg class="w-12 h-12 mx-auto stroke-slate-500" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                <p class="text-base font-medium">Awaiting input. Please enter a state to display authorized matching buyers.</p>
+            </div>
+        </main>
+
+    </div>
+
+    <!-- JavaScript Data and Application Logic Engine -->
+    <script>
+        // Comprehensive US States Mapping Dictionary
+        const statesData = {
+            "AL": "Alabama", "AK": "Alaska", "AS": "American Samoa", "AZ": "Arizona", "AR": "Arkansas",
+            "CA": "California", "CO": "Colorado", "CT": "Connecticut", "DE": "Delaware", "DC": "District of Columbia",
+            "FL": "Florida", "GA": "Georgia", "GU": "Guam", "HI": "Hawaii", "ID": "Idaho", "IL": "Illinois",
+            "IN": "Indiana", "IA": "Iowa", "KS": "Kansas", "KY": "Kentucky", "LA": "Louisiana", "ME": "Maine",
+            "MD": "Maryland", "MA": "Massachusetts", "MI": "Michigan", "MN": "Minnesota", "MS": "Mississippi",
+            "MO": "Missouri", "MT": "Montana", "NE": "Nebraska", "NV": "Nevada", "NH": "New Hampshire",
+            "NJ": "New Jersey", "NM": "New Mexico", "NY": "New York", "NC": "North Carolina", "ND": "North Dakota",
+            "MP": "N. Mariana Islands", "OH": "Ohio", "OK": "Oklahoma", "OR": "Oregon", "PA": "Pennsylvania",
+            "PR": "Puerto Rico", "RI": "Rhode Island", "SC": "South Carolina", "SD": "South Dakota", "TN": "Tennessee",
+            "TX": "Texas", "UT": "Utah", "VT": "Vermont", "VI": "U.S. Virgin Islands", "VA": "Virginia",
+            "WA": "Washington", "WV": "West Virginia", "WI": "Wisconsin", "WY": "Wyoming"
+        };
+
+        // Static Master Database mapped explicitly from the Buyer Reference Sheet
+        const buyersData = [
+            {
+                name: "Lerner & Rowe",
+                transferType: "Live Transfer",
+                hours: "24/7",
+                allowedStates: ["AZ", "NV", "NM", "WA"],
+                isExcluded: () => false,
+                priority: "",
+                criteria: {
+                    doi: "Within 12 months",
+                    treatment: "Within 30 days, no gaps in treatment over 30 days",
+                    fault: "Not at fault",
+                    injury: "Injured",
+                    defendant: "Insured at DOI, or the client has UIM",
+                    attorney: "Not currently represented",
+                    other: "Willing to treat within 1 year"
+                }
+            },
+            {
+                name: "The Advocates",
+                transferType: "Live Transfer",
+                hours: "11-7 EST",
+                allowedStates: ["AZ", "CA", "IA", "MT", "NV", "ND", "UT", "WY"],
+                isExcluded: () => false,
+                priority: "The transfer is direct to the attorney line.",
+                criteria: {
+                    doi: "Within 12 months",
+                    treatment: "Within 30 days (or continuous, no gaps in treatment over 30 days)",
+                    fault: "Not at fault",
+                    injury: "Injured",
+                    defendant: "Known and insured (or client has UM)",
+                    attorney: "None prior or current",
+                    other: "Property damage over $1,500 preferred (not required) (Aka Car must be damaged)"
+                }
+            },
+            {
+                name: "Beverly Law",
+                transferType: "Live Transfer",
+                hours: "11-11 EST",
+                allowedStates: ["CA", "TX"],
+                isExcluded: () => false,
+                priority: "First Priority in TX",
+                criteria: {
+                    doi: "Within 12 months",
+                    treatment: "Within 30 days, no gaps in treatment over 30 days",
+                    fault: "Not at fault",
+                    injury: "Injured and treated",
+                    defendant: "Known and insured (or client has UM)",
+                    attorney: "None prior or current",
+                    other: "Willing to continue treatment; proof of accident required (police report, insurance info, photos)"
+                }
+            },
+            {
+                name: "Turnbull",
+                transferType: "Live Transfer",
+                hours: "24/7",
+                allowedStates: ["AL", "GA", "TX"],
+                isExcluded: () => false,
+                priority: "First priority in GA & AL",
+                criteria: {
+                    doi: "Within 12 months",
+                    treatment: "Within 30 days, gaps up to 60 days allowed",
+                    fault: "Not at fault",
+                    injury: "Injured",
+                    defendant: "Insured at DOI, or the client has UM",
+                    attorney: "None",
+                    other: "Willing to treat within 1 year; willing to do injection or surgery if recommended by doctor, has objective proof of accident (PR, Photos etc.)"
+                }
+            },
+            {
+                name: "Monge & Associates",
+                transferType: "Live Transfer",
+                hours: "24/7",
+                allowedStates: [], // Universal state setup
+                isExcluded: (stateCode) => ["DE", "AK", "HI", "CT", "CA", "VA", "MI", "NJ", "NY", "FL", "PA", "LA", "TX", "CO"].includes(stateCode),
+                priority: "First priority in any state other than states in the exclusion list",
+                criteria: {
+                    doi: "Must be at least 6 months before SOL expires.",
+                    treatment: "Within 7 days, or 10 days if they have Health insurance. Follow up treatment should be within 14 days of initial treatment unless serious injury or medicals over 1k like xrays, CT scan, ambulance etc. Need continuous treatment.",
+                    fault: "Not at fault. Can be partially at fault only if client has serious injury.",
+                    injury: "Must be injured",
+                    defendant: "Has insurance, or client has UIM",
+                    attorney: "No current attorney",
+                    other: "Car must be damaged to prove case must have basketball/dinner plate-sized dent in damages not just small dents. Parking lot cases must have more than $3000 in damages (bigger dents). Would like to evaluate all cases where at fault driver is charged with a DUI Engine."
+                }
+            },
+            {
+                name: "McDonald Worley",
+                transferType: "Tell the client the firm will contact them within 24 hours.",
+                hours: "9:30-6 EST",
+                allowedStates: ["AZ", "GA", "NC", "NY", "TX"],
+                isExcluded: () => false,
+                priority: "",
+                criteria: {
+                    doi: "Within 3 months",
+                    treatment: "Within 7 days, No gaps bigger than 14 days.",
+                    fault: "Not at fault",
+                    injury: "Injured",
+                    defendant: "Insured at DOI, Or client has UIM",
+                    attorney: "None",
+                    other: "No parking lot cases involving 2 vehicles. They also accept pedestrian cases as long as it meets their criteria as usual."
+                }
+            },
+            {
+                name: "JBL 10x",
+                transferType: "Regular Transfer / No retainers involved",
+                hours: "24/7 (Inconsistent, Be Cautious)",
+                allowedStates: [], // Universal state setup
+                isExcluded: (stateCode) => ["AK", "DE", "SD", "VT", "WI", "RI", "CO"].includes(stateCode),
+                priority: "",
+                criteria: {
+                    doi: "0 to 6 months",
+                    treatment: "Within 2 weeks, Consistent treatment with no gaps over 30 days.",
+                    fault: "Not at fault",
+                    injury: "Injured",
+                    defendant: "Has insurance coverage or client has UIM",
+                    attorney: "No prior or current representation",
+                    other: "N/A"
+                }
+            }
+        ];
+
+        // Search Handlers & Normalization Logic
+        function findStateKey(input) {
+            const cleanInput = input.trim().toUpperCase();
+            if (statesData[cleanInput]) return cleanInput;
+            
+            for (const [code, name] of Object.entries(statesData)) {
+                if (name.toUpperCase() === cleanInput) return code;
+            }
+            return null;
+        }
+
+        function handleSearch() {
+            const searchVal = document.getElementById('stateSearch').value;
+            const outputMatrix = document.getElementById('outputMatrix');
+
+            if (!searchVal.trim()) {
+                outputMatrix.innerHTML = `
+                    <div class="glass-panel rounded-2xl p-12 text-center text-slate-400 space-y-3">
+                        <svg class="w-12 h-12 mx-auto stroke-slate-500" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                        <p class="text-base font-medium">Awaiting input. Please enter a state to display authorized matching buyers.</p>
+                    </div>`;
+                return;
+            }
+
+            const stateCode = findStateKey(searchVal);
+
+            if (!stateCode) {
+                outputMatrix.innerHTML = `
+                    <div class="bg-red-500/10 border border-red-500/20 text-red-200 rounded-2xl p-8 text-center space-y-2">
+                        <p class="text-lg font-semibold">No Matching State Code Identified</p>
+                        <p class="text-sm text-slate-400">Please review your input spelling or use the direct standard two-letter postal code format.</p>
+                    </div>`;
+                return;
+            }
+
+            // CRITICAL HARD BLOCK RULE: COLORADO SENATE BILL 26-174
+            if (stateCode === "CO") {
+                outputMatrix.innerHTML = `
+                    <div class="bg-red-600/20 border-2 border-red-500 text-white rounded-2xl p-8 space-y-4 shadow-2xl">
+                        <div class="flex items-center gap-3 text-red-400">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                            <h2 class="text-2xl font-bold tracking-tight">ABSOLUTE HARD BLOCK: COLORADO TRAFFIC PROHIBITED</h2>
+                        </div>
+                        <p class="text-slate-200 leading-relaxed max-w-4xl text-sm">
+                            Do <strong>NOT</strong> process, screen, or transfer Colorado traffic under any circumstances. Colorado enacted 
+                            <span class="underline decoration-red-400 font-mono text-amber-300">Senate Bill 26-174</span> titled 
+                            <strong>"Prohibit Lead Generation Legal Marketing"</strong>. Disconnect lead processing immediately for this territory.
+                        </p>
+                    </div>`;
+                return;
+            }
+
+            // Route Calculation
+            const validBuyers = buyersData.filter(buyer => {
+                if (buyer.allowedStates.length > 0) {
+                    return buyer.allowedStates.includes(stateCode);
+                } else {
+                    return !buyer.isExcluded(stateCode);
+                }
+            });
+
+            // State Metadata Panel (SOL Context)
+            const isShortSOL = ["KY", "TN", "LA"].includes(stateCode);
+            const solText = isShortSOL ? "1 Year (Kentucky, Tennessee, Louisiana short-window protocol)" : "2 Years max assumption (Standard Document Baseline)";
+
+            let htmlString = `
+                <div class="glass-panel rounded-2xl p-4 px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-l-4 border-cyan-500">
+                    <div>
+                        <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Active Search Context</span>
+                        <h2 class="text-xl font-bold text-white">${statesData[stateCode]} (${stateCode})</h2>
+                    </div>
+                    <div class="text-sm bg-slate-900/40 p-2 px-4 rounded-xl border border-slate-800">
+                        <span class="text-slate-400 text-xs block font-medium">Statute of Limitations (SOL) Context</span>
+                        <span class="${isShortSOL ? 'text-rose-400 font-semibold' : 'text-slate-200'}">${solText}</span>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 gap-6">
+            `;
+
+            if (validBuyers.length === 0) {
+                htmlString += `
+                    <div class="glass-panel rounded-2xl p-12 text-center text-slate-400">
+                        <p class="text-base font-medium">No specialized legal buyers match the specific search parameters for ${stateCode} at this time.</p>
+                    </div>`;
+            } else {
+                validBuyers.forEach(buyer => {
+                    // Visual Style Color Badges Based on Handling Type Matrix
+                    let badgeClass = "bg-cyan-500/10 border-cyan-500/30 text-cyan-300";
+                    if (buyer.transferType.includes("24 hours")) {
+                        badgeClass = "bg-amber-500/10 border-amber-500/30 text-amber-300";
+                    } else if (buyer.transferType.includes("No retainers")) {
+                        badgeClass = "bg-purple-500/10 border-purple-500/30 text-purple-300";
+                    }
+
+                    // Strict Risk Alert for JBL 2026 scheduling updates
+                    const isJBL = buyer.name === "JBL 10x";
+
+                    htmlString += `
+                        <div class="glass-panel rounded-2xl p-6 relative overflow-hidden group">
+                            <!-- Upper Layout Structure Header -->
+                            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-slate-800/80">
+                                <div class="space-y-1">
+                                    <div class="flex items-center gap-3 flex-wrap">
+                                        <h3 class="text-2xl font-bold text-white tracking-tight">${buyer.name}</h3>
+                                        <span class="px-3 py-1 text-xs font-semibold tracking-wide rounded-full border ${badgeClass}">
+                                            ${buyer.transferType}
+                                        </span>
+                                        ${buyer.priority ? `<span class="bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 px-2.5 py-0.5 rounded text-xs font-medium">${buyer.priority}</span>` : ''}
+                                    </div>
+                                    <p class="text-xs text-slate-400">Match confirmed for state pipeline area: <strong>${stateCode}</strong></p>
+                                </div>
+                                
+                                <div class="flex items-center gap-3 shrink-0">
+                                    <div class="bg-slate-900/60 border border-slate-800 p-2.5 px-4 rounded-xl flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                        <div class="text-left">
+                                            <span class="text-[10px] text-slate-500 block uppercase font-bold tracking-wider">Operational Hours</span>
+                                            <span class="text-xs font-semibold text-slate-200 ${isJBL ? 'text-amber-400' : ''}">${buyer.hours}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Structural Grid Key Matching Evaluation Point Criteria -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+                                <div class="glass-card rounded-xl p-3.5 space-y-1">
+                                    <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Date of Injury (DOI)</span>
+                                    <p class="text-sm font-medium text-slate-200">${buyer.criteria.doi}</p>
+                                </div>
+                                <div class="glass-card rounded-xl p-3.5 space-y-1 lg:col-span-2">
+                                    <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Medical Treatment Parameters</span>
+                                    <p class="text-sm font-medium text-slate-200">${buyer.criteria.treatment}</p>
+                                </div>
+                                <div class="glass-card rounded-xl p-3.5 space-y-1">
+                                    <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Fault Liability Case Limits</span>
+                                    <p class="text-sm font-medium text-slate-200">${buyer.criteria.fault}</p>
+                                </div>
+                                <div class="glass-card rounded-xl p-3.5 space-y-1">
+                                    <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Injury Requirements</span>
+                                    <p class="text-sm font-medium text-slate-200">${buyer.criteria.injury}</p>
+                                </div>
+                                <div class="glass-card rounded-xl p-3.5 space-y-1">
+                                    <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Defendant Liability Class</span>
+                                    <p class="text-sm font-medium text-slate-200">${buyer.criteria.defendant}</p>
+                                </div>
+                                <div class="glass-card rounded-xl p-3.5 space-y-1">
+                                    <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Current Legal Counsel Status</span>
+                                    <p class="text-sm font-medium text-slate-200">${buyer.criteria.attorney}</p>
+                                </div>
+                                <div class="glass-card rounded-xl p-3.5 space-y-1 lg:col-span-4 border-l-2 border-slate-700">
+                                    <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Critical Underwriting Guidelines / Notes</span>
+                                    <p class="text-sm text-slate-300 leading-relaxed">${buyer.criteria.other}</p>
+                                </div>
+                            </div>
+                        </div>`;
+                });
+            }
+
+            htmlString += `</div>`;
+            outputMatrix.innerHTML = htmlString;
+        }
+
+        // Event Listener Listeners setup for real-time search engine
+        document.getElementById('stateSearch').addEventListener('input', handleSearch);
+    </script>
+</body>
+</html>
