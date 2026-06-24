@@ -11,7 +11,7 @@
         
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #344465 0%, #344465 50%, #344465 100%);
+            background: linear-gradient(135deg, #062035 0%, #686767 50%, #0d1f2e 100%);
             background-attachment: fixed;
         }
 
@@ -223,40 +223,6 @@
                     other: "Car must be damaged to prove case must have basketball/dinner plate-sized dent in damages not just small dents. Parking lot cases must have more than $3000 in damages (bigger dents). Would like to evaluate all cases where at fault driver is charged with a DUI Engine."
                 }
             },
-            {
-                name: "McDonald Worley",
-                transferType: "Tell the client the firm will contact them within 24 hours.",
-                hours: "9:30-6 EST",
-                allowedStates: ["AZ", "GA", "NC", "NY", "TX"],
-                isExcluded: () => false,
-                priority: "",
-                criteria: {
-                    doi: "Within 3 months",
-                    treatment: "Within 7 days, No gaps bigger than 14 days.",
-                    fault: "Not at fault",
-                    injury: "Injured",
-                    defendant: "Insured at DOI, Or client has UIM",
-                    attorney: "None",
-                    other: "No parking lot cases involving 2 vehicles. They also accept pedestrian cases as long as it meets their criteria as usual."
-                }
-            },
-            {
-                name: "JBL 10x",
-                transferType: "Regular Transfer / No retainers involved",
-                hours: "24/7 (Inconsistent, Be Cautious)",
-                allowedStates: [], // Universal state setup
-                isExcluded: (stateCode) => ["AK", "DE", "SD", "VT", "WI", "RI", "CO"].includes(stateCode),
-                priority: "",
-                criteria: {
-                    doi: "0 to 6 months",
-                    treatment: "Within 2 weeks, Consistent treatment with no gaps over 30 days.",
-                    fault: "Not at fault",
-                    injury: "Injured",
-                    defendant: "Has insurance coverage or client has UIM",
-                    attorney: "No prior or current representation",
-                    other: "N/A"
-                }
-            }
         ];
 
         // Search Handlers & Normalization Logic
